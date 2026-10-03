@@ -1,0 +1,4 @@
+2026-10-03. Read-only connectivity attempt from macOS.
+$ ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=yes ubuntu-vm [read-only OS/architecture/docker check]
+Result: Network is unreachable, exit 255.
+No files transferred; Ubuntu VM OS, Docker, build and VS Code not verified.

@@ -1,0 +1,8 @@
+$ docker image inspect toolsafe-stm32-build:local --format ID={{.Id}} OS={{.Os}} Arch={{.Architecture}}
+ID=sha256:6f25311142bfe8a25560541cdf68ca5abd449e2e0631e9712d4b28c1e2ba2788 OS=linux Arch=arm64
+$ docker run --rm toolsafe-stm32-build:local arm-none-eabi-gcc --version
+arm-none-eabi-gcc (15:10.3-2021.07-4) 10.3.1 20210621 (release)
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
