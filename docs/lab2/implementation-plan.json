@@ -1,0 +1,18 @@
+{
+  "project": "ToolSafe",
+  "base": "8d8c326a04e56e9168a89a02611dbbc41323c9a9",
+  "stages": [
+    "pinout and contracts",
+    "portable MPU driver",
+    "board and nonblocking scheduler",
+    "calibration and filtering",
+    "mode event rules",
+    "UART commands",
+    "boundary and failure tests",
+    "coverage and CI",
+    "real captures and measurements",
+    "report"
+  ],
+  "state": "implementation in progress",
+  "screenshots": "real execution, no cursor, no macOS window buttons"
+}
