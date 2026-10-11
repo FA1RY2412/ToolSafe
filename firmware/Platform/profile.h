@@ -1,0 +1,7 @@
+#ifndef PROJECT_PROFILE_H
+#define PROJECT_PROFILE_H
+#define PROJECT_KIND TOOLSAFE
+#define PROJECT_NAME "ToolSafe"
+#define IMU_PERIOD_MS 20u
+#define ADC_PERIOD_MS 20u
+#endif
