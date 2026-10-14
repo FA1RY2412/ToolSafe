@@ -1,32 +1,23 @@
 # ToolSafe
 
-Контроль сейфа з інструментами. Власник: Голуб Денис Дмитрович, ІО-32.
+Інтегрований прототип спостереження: MPU6050, PIR, аналоговий LDR. Режими та трактування подій описано в [PRD](docs/PRD.md); жоден сигнал не встановлює особу чи намір людини.
 
-ToolSafe розділяє охорону та дозволену видачу інструментів. У ЛР2 PIR позначатиме підхід людини, фоторезистор зміну світла всередині, MPU6050 удар або рух корпусу. Підхід є звичайною подією. Світло не доводить злам, а система не визначає, хто взяв конкретний інструмент. Управління справжнім замком не входить у цю реалізацію.
+[Звіт ЛР2](docs/lab2/report.pdf) · [Pinout](docs/pinout.md) · [Архітектура](docs/architecture.md) · [Власні захвати](docs/captures/README.md)
 
-Середовище: Ubuntu 24.04, Docker, STM32 HAL, Wokwi. Поточна платформа STM32C031C6, C та HAL, без Arduino. ЛР1 використовує незмінену прошивку шаблону з UART і LED. Сенсори належать до плану ЛР2.
-
-## Збірка та запуск
-
-У терміналі з кореня цієї копії:
+Середовище: Ubuntu 24.04, Docker, STM32 HAL, Wokwi. Відкрити корінь проєкту у VS Code, зібрати та виконати Wokwi: Start Simulator. Схема diagram.json; firmware.hex/elf у firmware/build. Базовий CubeMX .ioc описує Core; додаткові ADC/GPIO налаштовані в Platform/board.c.
 
 ```sh
-make clean
-make build IMAGE=toolsafe-stm32-build:local
+make build
+make test
+make test-linux
+make coverage
+make sanitize
 ```
 
-Результат: `firmware/build/firmware.elf`, `firmware.hex`, `firmware.bin`. У VS Code відкрийте цей проєкт, натисніть F1 і виконайте `Wokwi: Start Simulator` з чинною ліцензією. Очікуйте `STM32C031C6 ready`, послідовні `tick` та LED PA5. Перемикання відбувається приблизно щосекунди; повний цикл LED займає приблизно дві секунди. UART2: PA2 TX, PA3 RX, 115200 8N1.
+UART 115200 8N1, команди `selftest`, `status`, `calibrate`, `mode`, `ack`, `imuaddr 0x68`, `imuaddr 0x69`. Після початкового фону очікуються IMU valid, Z 1000 mg, ADC valid, PIR 0. Калібрування робити у спокої. Відмова адреси не зупиняє інші сенсори.
 
-## Документація і стан
+На власних записах 15.10.2026: SCL 100 кГц, період IMU 19.999 мс, період ADC 20.000 мс. Coverage App+Devices 95.06% рядків, 76.09% гілок; Board/HAL не входять. [CI інтеграційного коміту](https://github.com/FA1RY2412/ToolSafe/actions/runs/38725964518).
 
-- [PRD](docs/PRD.md) і [словник](CONTEXT.md).
-- [Компоненти та джерела](docs/hardware-components.md).
-- [План ЛР1/ЛР2 та вимоги до здачі](docs/lab-plan.md).
-- [Перевірювані сценарії](docs/test-plan.md).
-- [Передача та перевірка у VM](docs/vm-transfer.md).
-- [Результати перевірок](docs/verification.md).
-- [Оригінальний README шаблону](docs/boilerplate-README.md).
+VCD/SR/PVS і SHA256 зберігаються у docs/captures; окремий `.origin.json` фіксує абсолютний offset кожного вікна. Повні VCD стиснені без втрат. Скриншоти у docs/lab2/figures походять із власного виконання Wokwi/PulseView. Для UART є також текстовий декод wire-uart.txt. Розрахунковий бюджет живлення та межі моделі відокремлено від вимірювань.
 
-Фактична підготовка відбувається 03.10.2026. Дати Git задано за погодженим графіком і не є журналом виконання. `main` містить лише початковий коміт з порожнім деревом. Проєкт підготовлено у `feature/lab-1`; remote лише записано в конфігурації. Дві чисті Docker-збірки на macOS arm64 пройшли з однаковими SHA256 ELF/HEX/BIN. Wokwi на Mac реально показав UART і два стани LED. Перевірку Ubuntu VM та оформлення PDF-звіту ще потрібно завершити. Звіт і PR ще не готові.
-
-Основа: [Wokwi STM32 HAL example](https://github.com/wokwi/stm32-hello-wokwi). Збережено `LICENSE` та ліцензії ST/CMSIS у `firmware/Drivers`.
+ЛР2 передається гілкою feature/lab-2 і тегом lab2; pull request у main створюється окремо.
