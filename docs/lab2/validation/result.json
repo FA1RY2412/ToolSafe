@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-10-15T14:13:07.170735+03:00",
+  "commands": [
+    "make build",
+    "make test-linux",
+    "make coverage"
+  ],
+  "exit_code": 0,
+  "capture_firmware_matches_rebuild": true,
+  "coverage": {
+    "lines": 263,
+    "executed": 250,
+    "branches": 435,
+    "taken": 331,
+    "line_percent": 95.06,
+    "branch_taken_percent": 76.09
+  },
+  "physical_hardware_tested": false
+}

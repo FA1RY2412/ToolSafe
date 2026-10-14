@@ -1,0 +1,83 @@
+{
+  "project": "ToolSafe",
+  "captured_on": "2026-10-15",
+  "source": "acceptance.vcd",
+  "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87",
+  "last_vcd_time_ns": 52716223525,
+  "channels": {
+    "D0": "SCL PB8",
+    "D1": "SDA PB9",
+    "D2": "USART2 TX PA2",
+    "D3": "PIR PA1",
+    "D4": "ADC_MARK PA4",
+    "D5": "LED PA5",
+    "D6": "USART2 RX PA3"
+  },
+  "trigger": "Wokwi starts acquisition with simulation; all windows are cropped afterward with source offsets retained",
+  "limits": "Simulated digital traces only; GPIO marker measures software ADC wrapper, not analog accuracy or ADC aperture",
+  "windows": [
+    {
+      "name": "i2c-whoami",
+      "start_ns": 9535225,
+      "end_ns": 10342250,
+      "sr_samplerate_hz": 20000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "i2c-manual-address",
+      "start_ns": 9680225,
+      "end_ns": 9795225,
+      "sr_samplerate_hz": 20000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "i2c-burst",
+      "start_ns": 21595775,
+      "end_ns": 23446250,
+      "sr_samplerate_hz": 20000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "uart-startup",
+      "start_ns": 4788225,
+      "end_ns": 12938225,
+      "sr_samplerate_hz": 20000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "adc-marker",
+      "start_ns": 23983150,
+      "end_ns": 24093150,
+      "sr_samplerate_hz": 20000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "adc-period",
+      "start_ns": 23893150,
+      "end_ns": 243993150,
+      "sr_samplerate_hz": 1000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "simultaneous-events",
+      "start_ns": 45831817450,
+      "end_ns": 46482817450,
+      "sr_samplerate_hz": 1000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "pir-pulse",
+      "start_ns": 45831817450,
+      "end_ns": 50833817475,
+      "sr_samplerate_hz": 1000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    },
+    {
+      "name": "i2c-nack",
+      "start_ns": 28091554175,
+      "end_ns": 28091774175,
+      "sr_samplerate_hz": 20000000,
+      "source_sha256": "6b01ef32f8db50ff3a024072ccdf3efa8e54c9b755de8343fb430db9577efb87"
+    }
+  ]
+}
